@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Code2, Award, CheckCircle } from 'lucide-react';
-
+import emailjs from '@emailjs/browser';
 const GithubIcon: React.FC<{ size?: number; className?: string }> = ({ size = 20, className }) => (
   <svg
     viewBox="0 0 24 24"
@@ -41,20 +41,41 @@ export const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API endpoint submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Clear notification after 5 seconds
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 1500);
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    await emailjs.send(
+      "service_domb5ul",
+      "template_oky50of",
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      "FThCThY9cfWu4uRDw"
+    );
+
+    setSubmitted(true);
+
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+
+    setTimeout(() => setSubmitted(false), 5000);
+
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+    alert("Failed to send message. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const socialLinks = [
     { name: 'LinkedIn', icon: <LinkedinIcon size={18} />, url: 'https://www.linkedin.com/in/srilakshmi-polumuru-ab333a359/', color: 'hover:bg-[#0077B5] hover:text-white text-[#0077B5]' },
