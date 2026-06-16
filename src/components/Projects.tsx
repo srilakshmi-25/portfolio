@@ -39,8 +39,8 @@ export const Projects: React.FC = () => {
         'Implements automated PDF roadmap downloads using ReportLab.',
         'Deployed securely on Streamlit Cloud with multi-agent orchestration.',
       ],
-      github: 'https://github.com/srilakshmi-25',
-      live: 'https://streamlit.io', // Placeholder for streamlit cloud deployment
+      github: 'https://github.com/srilakshmi-25/ai-interview-preparation-agent',
+      live: 'https://ai-interview-preparation-agent-aijb6xyk5msbljhcg3qjbe.streamlit.app/home', // Placeholder for streamlit cloud deployment
     },
     {
       title: 'AI-Powered PDF Chatbot using RAG',
@@ -54,8 +54,8 @@ export const Projects: React.FC = () => {
         'Applied prompt engineering strategies to eliminate AI hallucinations.',
         'Engineered an interactive Streamlit UI for dynamic document uploading.',
       ],
-      github: 'https://github.com/srilakshmi-25',
-      live: 'https://streamlit.io',
+      github: 'https://github.com/srilakshmi-25/llm-pdf-chatbot',
+      live: 'https://llm-pdf-chatbot-ju4thvhwttk8xz2hyscjer.streamlit.app/',
     },
     {
       title: 'Virtual Library Management System',
